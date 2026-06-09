@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lao → Vamotese Mapper</title>
+
+<style>
+@font-face {
+    font-family: "Vamotese";
+    src: url("vamotese.ttf");
+}
+
+body{
+    margin:0;
+    background:#0b0b0b;
+    color:#fff;
+    font-family:Arial;
+}
+
+.container{
+    max-width:900px;
+    margin:40px auto;
+    padding:20px;
+}
+
+textarea{
+    width:100%;
+    height:180px;
+    font-size:18px;
+    background:#111;
+    color:#fff;
+    border:1px solid #333;
+    padding:12px;
+}
+
+#out{
+    font-family:"Vamotese", monospace;
+    font-size:38px;
+    margin-top:12px;
+    white-space:pre-wrap;
+    color:#b6ffb6;
+    padding:10px;
+    background:#0f0f0f;
+    border:1px solid #222;
+}
+
+button{
+    margin-top:10px;
+    padding:8px 14px;
+    background:#222;
+    color:#fff;
+    border:1px solid #444;
+    cursor:pointer;
+}
+button:hover{ background:#333; }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<textarea id="input" placeholder="Paste Lao text here..."></textarea>
+
+<button onclick="runTest()">Run Test</button>
+
+<div id="out"></div>
+
+</div>
+
+<script>
+
+/* ================= MAP ================= */
+
+const MAP = {
+"ກ":"G","ຂ":"K","ຄ":"k","ງ":"n","ຈ":"j",
+"ສ":"S","ຊ":"s","ຍ":"J","ດ":"D","ຕ":"d",
+"ຖ":"T","ທ":"t","ນ":"N","ບ":"B","ປ":"b",
+"ຜ":"P","ຝ":"F","ພ":"p","ຟ":"f","ມ":"M",
+"ຢ":"Y","ຣ":"R","ລ":"L","ວ":"W","ຫ":"H",
+"ອ":"X","ຮ":"h",
+"ໜ":"HM","ໝ":"HN",
+
+"າ":"A","ະ":"a","ັ":"g",
+"ິ":"i","ີ":"I","ຶ":"Q","ື":"q",
+"ຸ":"u","ູ":"U","ໍ":"X","ຽ":"l",
+
+"ເ":"C","ແ":"c","ໂ":"o","ໄ":"v","ໃ":"V",
+"ົ":"E",
+
+"່":"w","້":"x","໊":"y","໋":"z","໌":"e"
+};
+
+/* ================= ENGINE ================= */
+
+function translate(text){
+    let out = "";
+    for(let ch of text){
+        out += MAP[ch] ?? ch;
+    }
+    return out;
+}
+
+/* ================= UI ================= */
+
+document.getElementById("input").addEventListener("input",e=>{
+    document.getElementById("out").innerText = translate(e.target.value);
+});
+
+/* ================= TEST ================= */
+
+function runTest(){
+
+    const test = `ຊາດລາວຕັ້ງແຕ່ໃດມາ
+ລາວທຸກທົ່ວໜ້າເຊີດຊູສຸດໃຈ`;
+
+    document.getElementById("input").value = test;
+    document.getElementById("out").innerText = translate(test);
+}
+
+</script>
+
+</body>
+</html>
