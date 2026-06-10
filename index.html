@@ -79,7 +79,7 @@ const MAP = {
 "ຜ":"P","ຝ":"F","ພ":"p","ຟ":"f","ມ":"M",
 "ຢ":"Y","ຣ":"R","ລ":"L","ວ":"W","ຫ":"H",
 "ອ":"X","ຮ":"h",
-"ໜ":"HM","ໝ":"HN",
+"ໜ":"HN","ໝ":"HM",
 
 "າ":"A","ະ":"a","ັ":"g",
 "ິ":"i","ີ":"I","ຶ":"Q","ື":"q",
@@ -111,8 +111,7 @@ document.getElementById("input").addEventListener("input",e=>{
 
 function runTest(){
 
-    const test = `ຊາດລາວຕັ້ງແຕ່ໃດມາ
-ລາວທຸກທົ່ວໜ້າເຊີດຊູສຸດໃຈ`;
+    const test = `ຊາດລາວຕັ້ງແຕ່ໃດມາ ລາວທຸກທົ່ວໜ້າເຊີດຊູສຸດໃຈ`;
 
     document.getElementById("input").value = test;
     document.getElementById("out").innerText = translate(test);
